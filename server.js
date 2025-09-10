@@ -12,6 +12,10 @@ mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true})
 .then(()=>console.log("✅ MongoDB connected"))
 .catch(err => console.error("❌ MongoDB error:", err) )
 
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running!");
+});
+
 app.get("/videos",async(req,res)=>{
     try{
         const videos = await Video.find({});
